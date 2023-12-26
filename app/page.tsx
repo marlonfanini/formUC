@@ -1,95 +1,120 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client'
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import '@/styles/styles.css';
+import Paso1 from '@/components/pasos/Paso1';
+import Paso2 from '@/components/pasos/Paso2';
+import Paso3 from '@/components/pasos/Paso3';
+import Perfil from '@/components/pasos/Perfil';
+import Paso4 from '@/components/pasos/Paso4';
 
-export default function Home() {
+
+const steps = [
+  { number: '1', name: 'Identificación<br>del cliente' },
+  { number: '2', name: 'Datos<br>complementarios' },
+  { number: '3', name: 'Información<br>financiera e inversiones' },
+  { number: '4', name: 'Requisitos' },
+  { number: '5', name: 'FATCA' }
+];
+
+const ProgressBar = ({ currentStep }: any) => {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+
+    <div className="progress-bar">
+      {steps.map((step, index) => {
+        const isCompleted = index < currentStep;
+        const isActive = index === currentStep;
+        const isIncomplete = index > currentStep;
+        const isNextCompleted = index + 1 < currentStep;
+
+        let arrowClass = `arrow-right triangle-${index} ${isCompleted && !isActive ? 'completed' : ''} ${isIncomplete ? 'inactive' : ''}`;
+        if (isCompleted && isNextCompleted) {
+          arrowClass += ' next-completed';
+        }
+
+
+        return (
+          <React.Fragment key={index}>
+            <div className={`step ${isCompleted ? 'completed' : ''} ${isActive ? 'active' : ''}`}>
+              <div className={`step-number ${isActive ? 'active' : isCompleted ? 'completed' : isIncomplete ? 'incomplete' : ''}`}>{step.number}</div>
+              <div className='stepandnumber'>
+                <div className={`step-name ${isActive ? 'active' : isCompleted ? 'completed' : ''}`} dangerouslySetInnerHTML={{ __html: step.name }}></div>
+                {isCompleted && !isActive && <FontAwesomeIcon icon={faCheck} className="checkmark-icon" />}
+              </div>
+            </div>
+            {index < steps.length - 1 && <div className={arrowClass}></div>}
+          </React.Fragment>
+        );
+      })}
+    </div>
+  );
+};
+
+
+const Page = () => {
+  const [currentStep, setCurrentStep] = useState(0);
+  const [showProfile, setShowProfile] = useState(false);
+  const [isStep4Completed, setIsStep4Completed] = useState(false);
+
+
+
+
+  const nextStep = () => {
+    if (currentStep === 2 && !showProfile) {
+      setShowProfile(true);
+    } else if (showProfile && currentStep === 2) {
+      setCurrentStep(4);
+      setIsStep4Completed(true);
+    } else {
+      setCurrentStep((prevStep) => (prevStep < steps.length - 1 ? prevStep + 1 : prevStep));
+    }
+  };
+
+
+  const prevStep = () => {
+    if (currentStep === 4 && showProfile) {
+      setCurrentStep(2);
+      setShowProfile(true);
+    } else if (showProfile) {
+      setCurrentStep(2);
+      setShowProfile(false);
+    } else {
+      setCurrentStep((prevStep) => (prevStep > 0 ? prevStep - 1 : prevStep));
+    }
+  };
+
+const currentStepName1 = steps[currentStep].name.replace('<br>', ' ');
+
+
+  return (
+    <div className='container'>
+      <div className='titulo'>
+        {currentStepName1}
       </div>
+      <ProgressBar currentStep={currentStep} isStepCompleted={isStep4Completed} />
+      {currentStepName1 === 'Identificación del cliente' && <Paso1 />}
+      {currentStepName1 === 'Datos complementarios' && <Paso2 />}
+      {currentStepName1 === 'Información financiera e inversiones' && (
+        <>
+          {!showProfile && <Paso3 />}
+          {showProfile && <Perfil />}
+        </>
+      )}
+      {currentStepName1 === 'FATCA' && <Paso4 />}
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+
+      <div className="navigation-buttons">
+        <button className="buttonPrev" onClick={prevStep} disabled={currentStep === 0}>  <ArrowBackIosNewIcon style={{ fontSize: '10px', fontWeight: '800' }} />ATRÁS</button>
+        <button className="buttonNext" onClick={nextStep} disabled={currentStep === steps.length - 1}>
+          CONTINUAR
+          <ArrowForwardIosIcon style={{ fontSize: '10px', fontWeight: '800' }} />
+        </button>
       </div>
+    </div>
+  );
+};
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
-}
+export default Page;
