@@ -572,18 +572,26 @@ const Paso1 = () => {
       }}>
         <Button
           variant="outlined"
-          startIcon={<AddCircleOutlineIcon />}
+          startIcon={<AddCircleOutlineIcon sx={{color: '#072f5a'}}/>}
           sx={{
-            color: '#1976d2', 
-            borderColor: '#1976d2', 
+            color: '#072f5a', 
+            borderColor: '#072f5a', 
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: '13px',
+            fontWeight: 600,
+            borderRadius: '10px',
             '&:hover': {
-              backgroundColor: '#bbdefb',
-              borderColor: '#1976d2',
+              color: '#fff',
+              borderColor: 'transparent', 
+              backgroundColor: '#00ADD8',
+              '& .MuiSvgIcon-root': {
+                color: '#fff',
+            },
             },
             textTransform: 'none', 
           }}
         >
-          Agregar nueva cuenta bancaria
+          AGREGAR NUEVA CUENTA BANCARIA 
         </Button>
       </Box>
 

@@ -48,7 +48,7 @@ const LegalEntityCard = () => {
                     minHeight: '50vh',
                     width: '90%',
                     margin: '0 auto', // Centra el contenido en móviles
-                    gap: 2, // Espaciado entre tarjetas
+                    gap: 4, // Espaciado entre tarjetas
                     paddingRight: 100
                 }}
             >
@@ -61,6 +61,7 @@ const LegalEntityCard = () => {
                         backgroundColor: '#F3F7F9',
                         width: isMobile ? '100%' : 1000, // Ajusta el ancho de las tarjetas
                         mb: 2, // Añade margen inferior en móviles
+                        borderRadius: '30px'
                     }}
                 >
                     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', p: 2 }}>
@@ -121,7 +122,8 @@ const LegalEntityCard = () => {
                         width: isMobile ? '100%' : 1000, // Ajusta el ancho de las tarjetas
                         mb: 2,
                         backgroundColor: '#F3F7F9',
-                        paddingTop: 2.7
+                        paddingTop: 2.7, 
+                        borderRadius: '30px'
                     }}
                 >
                     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', p: 2 }}>

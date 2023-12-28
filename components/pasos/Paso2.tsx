@@ -422,16 +422,24 @@ function Paso2()  {
           variant="outlined"
           startIcon={<AddCircleOutlineIcon />}
           sx={{
-            color: '#1976d2', 
-            borderColor: '#1976d2', 
+            color: '#072f5a', 
+            borderColor: '#072f5a', 
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: '13px',
+            fontWeight: 600,
+            borderRadius: '10px',
             '&:hover': {
-              backgroundColor: '#bbdefb',
-              borderColor: '#1976d2',
+              color: '#fff',
+              borderColor: 'transparent', 
+              backgroundColor: '#00ADD8',
+              '& .MuiSvgIcon-root': {
+                color: '#fff',
+            },
             },
             textTransform: 'none', 
           }}
         >
-          Agregar otro ingreso
+          AGREGAR OTRO INGRESO
         </Button>
       </Box>
 
@@ -661,11 +669,19 @@ function Paso2()  {
           variant="outlined"
           startIcon={<AddCircleOutlineIcon />}
           sx={{
-            color: '#1976d2', 
-            borderColor: '#1976d2', 
+            color: '#072f5a', 
+            borderColor: '#072f5a', 
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: '13px',
+            fontWeight: 600,
+            borderRadius: '10px',
             '&:hover': {
-              backgroundColor: '#bbdefb',
-              borderColor: '#1976d2',
+              color: '#fff',
+              borderColor: 'transparent', 
+              backgroundColor: '#00ADD8',
+              '& .MuiSvgIcon-root': {
+                color: '#fff',
+            },
             },
             textTransform: 'none', 
           }}
@@ -688,11 +704,19 @@ function Paso2()  {
           variant="outlined"
           startIcon={<AddCircleOutlineIcon />}
           sx={{
-            color: '#1976d2', 
-            borderColor: '#1976d2', 
+            color: '#072f5a', 
+            borderColor: '#072f5a', 
+            fontFamily: 'Montserrat, sans-serif',
+            fontSize: '13px',
+            fontWeight: 600,
+            borderRadius: '10px',
             '&:hover': {
-              backgroundColor: '#bbdefb',
-              borderColor: '#1976d2',
+              color: '#fff',
+              borderColor: 'transparent', 
+              backgroundColor: '#00ADD8',
+              '& .MuiSvgIcon-root': {
+                color: '#fff',
+            },
             },
             textTransform: 'none', 
           }}
