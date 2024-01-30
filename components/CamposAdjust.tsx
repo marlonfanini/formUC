@@ -1,5 +1,4 @@
 import { FormControl, Grid, InputLabel, MenuItem, Select } from '@mui/material'
-import React from 'react'
 
 function CamposAdjust({ lg, label}: any)  {
   return (
@@ -8,8 +7,9 @@ function CamposAdjust({ lg, label}: any)  {
                             '& .MuiOutlinedInput-root': {
                                 '& fieldset': {
                                     borderColor: '#9CA6AC',
-                                    borderRadius: '10px',
-                                    height: '55px'
+                                    borderRadius: '100px',
+                                    height: '50px',
+                                    padding: '1px'
                                 },
                                 '&:hover fieldset': {
                                     borderColor: '#007bff',

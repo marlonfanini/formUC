@@ -3,6 +3,8 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Montserrat } from 'next/font/google';
+import '@/styles/styles.css';
+
 
 const montserrat = Montserrat({
     weight: ['300', '400', '500', '700'],
@@ -28,32 +30,32 @@ const TableCuenta = () => {
                     }
                   `}
                 </style>
-                <TableCell  className={`${montserrat.className} hide-on-small-screens`} align="center" sx={{ borderRight: '20px solid #FFF' }}>Tipo de Cuenta</TableCell>
-                <TableCell className={montserrat.className} align="center" sx={{ borderRight: '20px solid #FFF' }}>Titular de la cuenta</TableCell>
-
-                <TableCell className={`${montserrat.className} hide-on-small-screens`} align="center" sx={{ borderRight: '20px solid #FFF' }}>Número de cuenta</TableCell>
-                <TableCell className={`${montserrat.className} hide-on-small-screens`} align="center">Acciones</TableCell>
+                <TableCell  className={`hide-on-small-screens`} align="center" sx={{ borderRight: '5.1px solid #FFF', borderRadius: '11px', fontFamily: 'Montserrat, sans-serif' }}>Tipo de Cuenta</TableCell>
+                <TableCell align="center"  sx={{ borderRight: '5.1px solid #FFF', borderRadius: '11px',fontFamily: 'Montserrat, sans-serif'}}>Titular de la cuenta</TableCell>
+                <TableCell className={` hide-on-small-screens`} align="center"  sx={{ borderRight: '5.1px solid #FFF', borderRadius: '11px', fontFamily: 'Montserrat, sans-serif' }}>Número de cuenta</TableCell>
+                <TableCell className={` hide-on-small-screens`} align="center" sx={{ borderRight: '5.1px solid #FFF', borderRadius: '11px', fontFamily: 'Montserrat, sans-serif'}}>Acciones</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              <TableRow>
-                <TableCell  className={`${montserrat.className} hide-on-small-screens`} align="center">Ahorros</TableCell>
-                <TableCell className={montserrat.className} align="center">Guillermo de Ockham</TableCell>
-                <TableCell className={`${montserrat.className} hide-on-small-screens`} align="center">098 765 4321</TableCell>
-                <TableCell className={`${montserrat.className} hide-on-small-screens`} align="center">
+              <TableRow sx ={{fontFamily: 'Montserrat, sans-serif',}}>
+                <TableCell  className={` hide-on-small-screens`} sx={{fontFamily: 'Montserrat, sans-serif'}} align="center">Ahorros</TableCell>
+                <TableCell sx={{fontFamily: 'Montserrat, sans-serif'}} align="center">Guillermo de Ockham</TableCell>
+                <TableCell sx={{fontFamily: 'Montserrat, sans-serif'}} className={` hide-on-small-screens`} align="center">098 765 4321</TableCell>
+                <TableCell sx={{fontFamily: 'Montserrat, sans-serif'}} className={`hide-on-small-screens`} align="center">
                   <Button
-                    className={montserrat.className}
                     variant="contained"
                     startIcon={<DeleteIcon />}
                     sx={{
                       height: '35px',
-                      width: '131px',
+                      width: '110px',
                       borderTopLeftRadius: '10px',
                       borderBottomLeftRadius: '10px',
                       borderTopRightRadius: 0,
                       borderBottomRightRadius: 0,
                       marginRight: '-1px',
                       backgroundColor: '#072f5a',
+                      fontSize: '11px',
+                      fontFamily: 'Montserrat, sans-serif',
                       '&:hover': {
                         backgroundColor: '#0C223F',
                       },
@@ -62,19 +64,20 @@ const TableCuenta = () => {
                     Eliminar
                   </Button>
                   <Button
-                    className={montserrat.className}
                     variant="contained"
                     startIcon={<EditIcon />}
                     sx={{
                       height: '35px',
-                      width: '135px',
+                      width: '110px',
                       borderTopLeftRadius: 0,
                       borderBottomLeftRadius: 0,
                       borderTopRightRadius: '10px',
                       borderBottomRightRadius: '10px',
-                      backgroundColor: '#00ADD',
+                      fontSize: '11px',
+                      fontFamily: 'Montserrat, sans-serif',
+                      backgroundColor: '#00AABE',
                       '&:hover': {
-                        backgroundColor: '#007bff',
+                        backgroundColor: '#00AABE',
                       },
                     }}
                   >

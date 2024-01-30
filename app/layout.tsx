@@ -14,9 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body >
-        <Grid style={{display: 'flex', flexDirection: 'column'}} container component="main" >
-          <Box sx={{ flexGrow: 1 }}>
+      
+      <body style={{margin: '0'}} >
+      <Box sx={{width: '100%'}} >
             <AppBar style={{ backgroundColor: '#0A233F' }} position="static">
               <Toolbar>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -25,13 +25,11 @@ export default function RootLayout({
                 </Typography>
               </Toolbar>              
             </AppBar>
-          </Box>
-          <div style={{display: 'flex',justifyContent: 'right', margin: '30px 40px 0px 30px '}}>
-            <img src="https://i.ibb.co/Vwpm8yj/logo-og.png" width={'100px'}  ></img>              
-            </div>
+          </Box>   
+     
           {children}
-        </Grid>
       </body>
+    
     </html>
   )
 }

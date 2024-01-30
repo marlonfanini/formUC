@@ -10,10 +10,9 @@ import Switch from '@mui/material/Switch';
 import '@/styles/styles.css';
 import { CamposDropdown } from '../CamposDropdown';
 import CamposAdjust from '../CamposAdjust';
-import { Checkbox, FormGroup, FormLabel } from '@mui/material';
 import { FormControlLabel, FormControl } from '@mui/material';
-import ChecboxGenerator from '../ChecboxGenerator';
-
+import CheckboxItems from '../Checkboxitems';
+import SwitchComponent from '../Switch';
 
 
 const checkboxLabels = [
@@ -21,10 +20,10 @@ const checkboxLabels = [
     "Acciones",
     "Fondos cerrados",
     "Papeles comerciales",
-    "Préstamo de títulos valores (mutuos)",
+    "Prestamo valores (mutuos)",
     "Operaciones a plazo (forwards)",
     "Préstamos de margen",
-    "Fondos abiertos", 
+    "Fondos abiertos",
     "Bonos"
 ];
 
@@ -37,7 +36,18 @@ const checkboxOptions = [
     "Venta de activos",
     "Salario actual",
     "Otros",
-  ];
+];
+
+const ActivosLiquidos = [
+    "Cuenta corriente / ahorros",
+    "Bonos",
+    "Certificados financieros",
+    "Fondos cerrados",
+    "Acciones",
+    "Papel comercial",
+    "Fondos mutuos",
+];
+
 
 function Paso3() {
     const [vinculado, setVinculado] = useState(false);
@@ -55,50 +65,8 @@ function Paso3() {
                     <Grid container spacing={2}>
                         <CamposDropdown label={"Cantidad de operaciones promedio durante los últimos tres meses"} />
                         <CamposDropdown label={"Monto promedio a invertir anual"} />
-                        <Grid item xs={12} sm={20}>
-                            <FormControlLabel
-                                required
-                                value="end"
-                                control={
-                                    <Switch
-                                        color="primary"
-                                    //   checked={vinculado}
-                                    //   onChange={handleVinculadoChange}
-                                    />
-                                }
-                                label="¿Ha laborado en cargos de dirección en el área de negocios o áreas afines de una entidad que opere en el sistema financiero, por un período de al menos dos (2) años? "
-                                labelPlacement="start"
-                                sx={{
-                                    marginLeft: 'auto',
-                                    '& .MuiTypography-root': {
-                                        color: '#283739',
-                                        fontFamily: 'Montserrat, sans-serif', 
-                                    }
-                                }}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={20}>
-                            <FormControlLabel
-                                required
-                                value="end"
-                                control={
-                                    <Switch
-                                        color="primary"
-                                    //   checked={vinculado}
-                                    //   onChange={handleVinculadoChange}
-                                    />
-                                }
-                                label="¿Ha sido miembro del consejo de administración de una entidad que opere en el sistema financiero, por un período de al menos dos (2) años?"
-                                labelPlacement="start"
-                                sx={{
-                                    marginLeft: 'auto',
-                                    '& .MuiTypography-root': {
-                                        color: '#283739',
-                                        fontFamily: 'Montserrat, sans-serif', 
-                                    }
-                                }}
-                            />
-                        </Grid>
+                        <SwitchComponent label={"¿Ha laborado en cargos de dirección en el área de negocios o áreas afines de una entidad que opere en el sistema financiero, por un período de al menos dos (2) años?"} />
+                        <SwitchComponent label={"¿Ha sido miembro del consejo de administración de una entidad que opere en el sistema financiero, por un período de al menos dos (2) años?"} />
 
                         <Grid item xs={12} sm={20}>
                             <FormControlLabel
@@ -117,7 +85,7 @@ function Paso3() {
                                     marginLeft: 'auto',
                                     '& .MuiTypography-root': {
                                         color: '#283739',
-                                        fontFamily: 'Montserrat, sans-serif', 
+                                        fontFamily: 'Montserrat, sans-serif',
                                     }
                                 }}
                             />
@@ -140,7 +108,7 @@ function Paso3() {
                                     marginLeft: 'auto',
                                     '& .MuiTypography-root': {
                                         color: '#283739',
-                                        fontFamily: 'Montserrat, sans-serif', 
+                                        fontFamily: 'Montserrat, sans-serif',
                                     }
                                 }}
                             />
@@ -163,156 +131,29 @@ function Paso3() {
                                     marginLeft: 'auto',
                                     '& .MuiTypography-root': {
                                         color: '#283739',
-                                        fontFamily: 'Montserrat, sans-serif', 
+                                        fontFamily: 'Montserrat, sans-serif',
                                     }
                                 }}
                             />
                         </Grid>
 
 
-
                         {
                             vinculado && (
                                 <>
-
-                                    <Grid item xs={12} sm={6} md={2} lg={4} mb={2} sx={{
-                                        '& .MuiOutlinedInput-root': {
-                                            '& fieldset': {
-                                                borderColor: '#9CA6AC',
-                                                borderRadius: '10px',
-                                                height: '55px'
-                                            },
-                                            '&:hover fieldset': {
-                                                borderColor: '#007bff',
-                                            },
-                                            '&.Mui-focused fieldset': {
-                                                borderColor: '#00ADD8',
-                                            },
-                                        },
-                                        '& .MuiInputLabel-asterisk': {
-                                            color: 'red',
-                                        }
-                                    }}>
-                                        <FormControl required fullWidth>
-                                            <InputLabel id="estado-civil-label">Nombre de la persona ocupa el cargo</InputLabel>
-                                            <Select
-                                                labelId="estado-civil-label"
-                                                id="estado-civil-select"
-                                                label="Nombre de la persona ocupa el cargo"
-                                            >
-                                                <MenuItem value={10}>Hombre</MenuItem>
-                                                <MenuItem value={20}>Mujer</MenuItem>
-                                            </Select>
-                                        </FormControl>
-                                    </Grid>
-
-
-                                    <Grid item xs={12} sm={6} md={2} lg={2} mb={2} sx={{
-                                        '& .MuiOutlinedInput-root': {
-                                            '& fieldset': {
-                                                borderColor: '#9CA6AC',
-                                                borderRadius: '10px',
-                                                height: '55px'
-                                            },
-                                            '&:hover fieldset': {
-                                                borderColor: '#007bff',
-                                            },
-                                            '&.Mui-focused fieldset': {
-                                                borderColor: '#00ADD8',
-                                            },
-                                        },
-                                        '& .MuiInputLabel-asterisk': {
-                                            color: 'red',
-                                        }
-                                    }}>
-                                        <FormControl required fullWidth>
-                                            <InputLabel id="estado-civil-label">Sector</InputLabel>
-                                            <Select
-                                                labelId="estado-civil-label"
-                                                id="estado-civil-select"
-                                                label="Sector"
-                                            >
-                                                <MenuItem value={10}>Soltero</MenuItem>
-                                                <MenuItem value={20}>Casado</MenuItem>
-                                            </Select>
-                                        </FormControl>
-                                    </Grid>
-
-                                    <Grid item xs={12} sm={6} md={2} lg={2} mb={2} sx={{
-                                        '& .MuiOutlinedInput-root': {
-                                            '& fieldset': {
-                                                borderColor: '#9CA6AC',
-                                                borderRadius: '10px',
-                                                height: '55px'
-                                            },
-                                            '&:hover fieldset': {
-                                                borderColor: '#007bff',
-                                            },
-                                            '&.Mui-focused fieldset': {
-                                                borderColor: '#00ADD8',
-                                            },
-                                        },
-                                        '& .MuiInputLabel-asterisk': {
-                                            color: 'red',
-                                        }
-                                    }}>
-                                        <FormControl required fullWidth>
-                                            <InputLabel id="estado-civil-label">Última fecha en el cargo</InputLabel>
-                                            <Select
-                                                labelId="estado-civil-label"
-                                                id="estado-civil-select"
-                                                label="Última fecha en el cargo"
-                                            >
-                                                <MenuItem value={10}>Soltero</MenuItem>
-                                                <MenuItem value={20}>Casado</MenuItem>
-                                            </Select>
-                                        </FormControl>
-                                    </Grid>
-
-                                    <Grid item xs={12} sm={6} md={2} lg={4} mb={2} sx={{
-                                        '& .MuiOutlinedInput-root': {
-                                            '& fieldset': {
-                                                borderColor: '#9CA6AC',
-                                                borderRadius: '10px',
-                                                height: '55px'
-                                            },
-                                            '&:hover fieldset': {
-                                                borderColor: '#007bff',
-                                            },
-                                            '&.Mui-focused fieldset': {
-                                                borderColor: '#00ADD8',
-                                            },
-                                        },
-                                        '& .MuiInputLabel-asterisk': {
-                                            color: 'red',
-                                        }
-                                    }}>
-                                        <FormControl required fullWidth>
-                                            <InputLabel id="estado-civil-label">Especificar cargo e institución</InputLabel>
-                                            <Select
-                                                labelId="estado-civil-label"
-                                                id="estado-civil-select"
-                                                label="Especificar cargo e institución"
-                                            >
-                                                <MenuItem value={10}>Hombre</MenuItem>
-                                                <MenuItem value={20}>Mujer</MenuItem>
-                                            </Select>
-                                        </FormControl>
-                                    </Grid>
-
-
-
+                                    <CamposAdjust lg={4} label="Nombre de la persona ocupa el cargo" />
+                                    <CamposAdjust lg={2} label="Sector" />
+                                    <CamposAdjust lg={2} label="Última fecha en el cargo" />
+                                    <CamposAdjust lg={4} label="Especificar cargo e institución" />
                                 </>
                             )
                         }
 
 
                     </Grid>
-
                 </Box>
 
                 <h2 style={{ color: '#072f5a', marginTop: '50px' }}>Perfil del Inversionista</h2>
-
                 <Box sx={{ flexGrow: 2, mt: 4 }}>
                     <Grid container spacing={2}>
                         <CamposAdjust lg={4} label="¿Se considera usted un inversionista?" />
@@ -346,37 +187,21 @@ function Paso3() {
 
                 <Box sx={{ flexGrow: 2, mt: 4, ml: 2 }}>
 
-                    <Grid container spacing={2}>
-                        <p style={{color: '#072f5a'}}><strong>Operaciones de valores y financieras que realiza y comprende (marcar las que está dispuesto a realizar con United Capital)</strong></p>
-                        <Grid item xs={12} mt={0}>
-                            <FormGroup row >
-                                {checkboxLabels.map((label, index) => (
-                                    <ChecboxGenerator key={index} label={label} />
-                                ))}
-                            </FormGroup>
-                        </Grid>
-                      </Grid>
+
 
                     <Grid mt={2} container spacing={2}>
-                        <p style={{color: '#072f5a'}}><strong>Fuentes de ingresos u origen de los fondos</strong></p>
-                        <Grid item xs={12} mt={0}>
-                            <FormGroup row >
-                                {checkboxOptions.map((label, index) => (
-                                    <ChecboxGenerator key={index} label={label} />
-                                ))}
-                            </FormGroup>
-                        </Grid>
+                        <p style={{ color: '#072f5a' }}><strong>Operaciones de valores y financieras que realiza y comprende (marcar las que está dispuesto a realizar con United Capital)</strong></p>
+                        <CheckboxItems checkboxLabels={checkboxLabels} />
                     </Grid>
 
                     <Grid mt={2} container spacing={2}>
-                        <p style={{color: '#072f5a'}}><strong>Distribución activos líquidos</strong></p>
-                        <Grid item xs={12} mt={0}>
-                            <FormGroup row >
-                                {checkboxOptions.map((label, index) => (
-                                    <ChecboxGenerator key={index} label={label} />
-                                ))}
-                            </FormGroup>
-                        </Grid>
+                        <p style={{ color: '#072f5a' }}><strong>Fuentes de ingresos u origen de los fondos</strong></p>
+                        <CheckboxItems checkboxLabels={checkboxOptions} />
+                    </Grid>
+
+                    <Grid mt={2} container spacing={2}>
+                        <p style={{ color: '#072f5a' }}><strong>Distribución activos líquidos</strong></p>
+                        <CheckboxItems checkboxLabels={ActivosLiquidos} />
                     </Grid>
                 </Box>
 

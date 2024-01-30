@@ -8,10 +8,12 @@ export function CamposText({ label }: any)  {
   return (
     <Grid item xs={12} sm={6} md={3} lg={4} mb={2} sx={{
       '& .MuiOutlinedInput-root': {
+        borderRadius: '20px',
         '& fieldset': {
           borderColor: '#9CA6AC',
-          borderRadius: '10px',
-          height: '55px'
+          borderRadius: '100px',
+          height: '51px', 
+          padding: '1px'
         },
         '&:hover fieldset': {
           borderColor: '#007bff',

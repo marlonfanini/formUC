@@ -9,10 +9,14 @@ export function CamposDropdown({ label }: any) {
   return (
     <Grid item xs={12} sm={8} md={4}  mb={2}  sx={{
         '& .MuiOutlinedInput-root': {
+          borderRadius: '200px',
+
           '& fieldset': {
             borderColor: '#9CA6AC',
-            borderRadius: '10px',
-            height: '55px'
+            borderRadius: '210px',
+            height: '51px',
+            padding: '1px'
+
           },
           '&:hover fieldset': {
             borderColor: '#007bff',
@@ -31,6 +35,8 @@ export function CamposDropdown({ label }: any) {
             labelId="estado-civil-label"
             id="estado-civil-select"
             label={`${label}`}
+            inputProps={{ style: { fontSize: '8px' } }} // Ajusta el tamaño de fuente según tus necesidades
+
           >
             {/* <MenuItem value={10}>Soltero</MenuItem>
             <MenuItem value={20}>Casado</MenuItem> */}

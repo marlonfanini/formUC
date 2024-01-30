@@ -1,3 +1,4 @@
+'use client'
 import '@/styles/styles.css'
 import ForumIcon from '@mui/icons-material/Forum';
 import { Container, Grid, TextField, MenuItem, InputAdornment, Typography, Box, Button } from '@mui/material';
@@ -7,10 +8,24 @@ import FingerprintIcon from '@mui/icons-material/Fingerprint';
 import GppGoodIcon from '@mui/icons-material/GppGood';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import Link from 'next/link';
+import { useState } from 'react';
 
 
 
 const page = () => {
+
+    const [selectedIdentificationType, setSelectedIdentificationType] = useState('');
+    const [identificationNumber, setIdentificationNumber] = useState('');
+
+    const handleIdentificationTypeChange = (event: any) => {
+        setSelectedIdentificationType(event.target.value);
+    };
+
+    const handleIdentificationNumberChange = (event: any) => {
+        setIdentificationNumber(event.target.value);
+    };
+
+
     return (
         <Container maxWidth="sm">
             <Box my={4}>
@@ -62,6 +77,8 @@ const page = () => {
                             }}
                             select
                             label="Selecciona una identificación"
+                            value={selectedIdentificationType}
+                            onChange={handleIdentificationTypeChange}
                             fullWidth
                             InputProps={{
                                 startAdornment: (
@@ -71,9 +88,9 @@ const page = () => {
                                 ),
                             }}
                         >
-                            <MenuItem value={10}>Pasaporte</MenuItem>
-                            <MenuItem value={20}>DNI</MenuItem>
-                            <MenuItem value={30}>Licencia de Conducir</MenuItem>
+                            <MenuItem value={'Cédula de identidad'}>Cédula de identidad</MenuItem>
+                            <MenuItem value={'Cédula de Identidad y Electoral'}>Cédula de Identidad y Electoral</MenuItem>
+                            <MenuItem value={'Pasaporte'}>Pasaporte</MenuItem>
                         </TextField>
                     </Grid>
                 </Grid>
@@ -97,7 +114,7 @@ const page = () => {
                             },
                         }}
                         fullWidth
-                        label="Documento de Identidad"
+                        label={`${selectedIdentificationType}`}
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
@@ -153,7 +170,7 @@ const page = () => {
                     </Box>
                 </Grid>
 
-    
+
             </Box>
         </Container>
     )

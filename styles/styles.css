@@ -293,6 +293,34 @@
     transition: all 0.5s ease;
 }
 
+/* Popup.css */
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup {
+    background-color: white;
+    width: 54%;
+    padding: 20px;
+    border: 2px solid  #00ADD8;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Apply backdrop blur effect */
+  .popup-container {
+    backdrop-filter: blur(3px);
+  }
+
 .buttonNext {
     width: 150px;
     height: 35px;
@@ -463,18 +491,21 @@
     font-size: 14px;
 }
 
+.PhoneInput {
+    height: 100px;
+}
+
 .profile-card {
     background-color: #00AABE;
-    padding: 20px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    padding: 10px;
+    border-radius: 10px;
     color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 320px;
-    height: 270px;
+    height: 230px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -547,7 +578,8 @@
     color: white;
     overflow: hidden;
     width: 100%;
-    height: 310px;
+    height: 290px;
+    margin-top: 6px;
 }
 
 .checklist-item {
@@ -629,7 +661,7 @@
     background-color: #072f5a;
     color: white;
     border-radius: 8px;
-    padding: 20px;
+    padding: 18px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -715,3 +747,4 @@
 .card-hover-animation:hover {
     transform: scale(1.05);
 }
+
